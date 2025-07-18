@@ -22,10 +22,9 @@ This portfolio is a fully responsive, modern, and minimalist website built to pr
 
 The site is built using the following technologies:
 
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
-- **Framework/Library:** [React.js](https://react.dev) / [Next.js](https://nextjs.org) *(optional based on your stack)*
-- **Styling:** Tailwind CSS / Sass / Styled Components *(choose based on what you used)*
-- **Hosting:** GitHub Pages / Vercel / Netlify *(whichever you use)*
+- **Frontend:** HTML5, CSS3
+- **Styling:**  CSS 
+- **Hosting:** GitHub Pages 
 
 ---
 
@@ -39,5 +38,12 @@ The site is built using the following technologies:
 
 ---
 
-## 📂 Folder Structure
+## 📫 Contact
+
+Feel free to connect with me:
+
+- **Email:** [forhadhasan1007@gmail.com](mailto:forhadhasan1007@gmail.com)
+- **LinkedIn:** [forhad_hasan](https://www.linkedin.com/in/forhad-hasan-b5769b2b0/)
+- **GitHub:** [2021331066-forhad](https://github.com/2021331066-forhad)
+- **Website:** [Portfolio](https://2021331066-forhad.github.io/PF/)
 
