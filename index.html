@@ -1,291 +1,362 @@
-@@ .. @@
-         .nav-links a {
-             color: var(--gray-700);
-             text-decoration: none;
-             font-weight: 500;
-             font-size: 0.95rem;
-             transition: 0.3s;
-         }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Muhammad Forhad Hasan - Portfolio</title>
+    <meta name="description" content="CSE Undergraduate | Competitive Programmer | Aspiring Fullstack Software Engineer"/>
+    <meta name="author" content="Muhammad Forhad Hasan"/>
 
-         .nav-links a:hover {
-             color: var(--maroon);
-         }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-+        .nav-links a.active {
-+            color: var(--maroon);
-+            font-weight: 600;
-+        }
-+
-         .main-container {
-             min-height: 100vh;
-             display: flex;
-             margin-top: 80px;
-         }
+    <style>
+        :root {
+            --maroon: #8B1538;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gray-50: #F9FAFB;
+            --gray-200: #E5E7EB;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+        }
 
-         .left-side {
-             flex: 1;
-             background: var(--gray-50);
-             display: flex;
-             flex-direction: column;
-             justify-content: center;
-             padding: 4rem;
-             clip-path: polygon(0 0, 75% 0, 85% 100%, 0 100%);
-         }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-         .content {
-             max-width: 500px;
-             animation: slideInLeft 1s ease-out;
-         }
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background: var(--white);
+        }
 
-         .greeting {
-             font-size: 1.4rem;
-             color: var(--gray-600);
-             margin-bottom: 1rem;
-         }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+            z-index: 1000;
+        }
 
-         .name {
-             font-family: 'Space Grotesk', sans-serif;
-             font-size: clamp(3rem, 8vw, 4.5rem);
-             font-weight: 700;
-             color: var(--black);
-             margin-bottom: 1.5rem;
-         }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-         .title {
-             font-size: 1.3rem;
-             color: var(--gray-500);
-             margin-bottom: 3rem;
-         }
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--maroon), #A61E4D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
 
-         .social-links {
-             display: flex;
-             gap: 1.5rem;
-         }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
 
-         .social-icon {
-             width: 50px;
-             height: 50px;
-             background: var(--white);
-             border-radius: 50%;
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             color: var(--gray-700);
-             text-decoration: none;
-             font-size: 1.2rem;
-             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-             transition: 0.3s;
-         }
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
 
-         .social-icon:hover {
-             background: var(--maroon);
-             color: var(--white);
-             transform: translateY(-3px);
-             box-shadow: 0 8px 25px rgba(139, 21, 56, 0.3);
-         }
+        .nav-links a:hover {
+            color: var(--maroon);
+        }
 
-         .right-side {
-             flex: 1;
-             background: var(--black);
-             display: flex;
-             align-items: center;
-             justify-content: center;
-+            padding: 2rem;
-         }
+        .nav-links a.active {
+            color: var(--maroon);
+            font-weight: 700;
+        }
 
-         .image-container {
-             position: relative;
-             animation: slideInRight 1s ease-out;
-         }
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-700);
+            cursor: pointer;
+        }
 
-         .profile-image {
-             width: 450px;
-             height: 600px;
-             object-fit: cover;
-             border-radius: 20px;
-             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-         }
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            margin-top: 80px;
+        }
 
-+        .mobile-menu {
-+            display: none;
-+            background: none;
-+            border: none;
-+            font-size: 1.5rem;
-+            color: var(--gray-700);
-+            cursor: pointer;
-+        }
-+
-         @keyframes slideInLeft {
-             from {
-                 opacity: 0;
-                 transform: translateX(-50px);
-             }
-             to {
-                 opacity: 1;
-                 transform: translateX(0);
-             }
-         }
+        .left-side {
+            flex: 1;
+            background: var(--gray-50);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            clip-path: polygon(0 0, 75% 0, 85% 100%, 0 100%);
+        }
 
-         @keyframes slideInRight {
-             from {
-                 opacity: 0;
-                 transform: translateX(50px);
-             }
-             to {
-                 opacity: 1;
-                 transform: translateX(0);
-             }
-         }
+        .content {
+            max-width: 500px;
+            animation: slideInLeft 1s ease-out;
+        }
 
-         @media (max-width: 768px) {
-+            .mobile-menu {
-+                display: block;
-+            }
-+
-             .nav-links {
-                 display: none;
-             }
+        .greeting {
+            font-size: 1.4rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
 
-             .main-container {
-                 flex-direction: column;
-                 margin-top: 70px;
-+                min-height: calc(100vh - 70px);
-             }
+        .name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+        }
 
-             .left-side {
-                 clip-path: none;
-                 padding: 3rem 2rem;
-                 text-align: center;
-+                flex: none;
-+                min-height: 50vh;
-+                display: flex;
-+                align-items: center;
-+                justify-content: center;
-             }
+        .title {
+            font-size: 1.3rem;
+            color: var(--gray-500);
+            margin-bottom: 3rem;
+        }
 
-             .right-side {
--                min-height: 60vh;
-+                flex: none;
-+                min-height: 50vh;
-+                background: var(--white);
-+                padding: 2rem;
-             }
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
 
-+            .image-container {
-+                display: flex;
-+                justify-content: center;
-+                align-items: center;
-+                height: 100%;
-+            }
-+
-             .profile-image {
-                 width: 300px;
-                 height: 400px;
-+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-             }
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
 
-             .content {
-                 max-width: 100%;
-             }
+        .social-icon:hover {
+            background: var(--maroon);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 21, 56, 0.3);
+        }
 
-             .social-links {
-                 justify-content: center;
-             }
-+
-+            .greeting {
-+                font-size: 1.2rem;
-+            }
-+
-+            .name {
-+                font-size: clamp(2.5rem, 10vw, 3.5rem);
-+                margin-bottom: 1rem;
-+            }
-+
-+            .title {
-+                font-size: 1.1rem;
-+                margin-bottom: 2rem;
-+            }
-         }
+        .right-side {
+            flex: 1;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
 
-         @media (max-width: 480px) {
-             .left-side {
-                 padding: 2rem 1.5rem;
-             }
+        .image-container {
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
 
-             .profile-image {
-                 width: 250px;
-                 height: 350px;
-             }
+        .profile-image {
+            width: 450px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
 
-             .nav-container {
-                 padding: 0 1.5rem;
-             }
-+
-+            .greeting {
-+                font-size: 1.1rem;
-+            }
-+
-+            .name {
-+                font-size: clamp(2rem, 12vw, 3rem);
-+            }
-+
-+            .title {
-+                font-size: 1rem;
-+            }
-+
-+            .social-icon {
-+                width: 45px;
-+                height: 45px;
-+                font-size: 1.1rem;
-+            }
-         }
-     </style>
- </head>
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
- <body>
-     <nav class="navbar">
-         <div class="nav-container">
-             <a href="#" class="logo">Forhad Hasan</a>
-             <ul class="nav-links">
--                <li><a href="index.html">Home</a></li>
-+                <li><a href="index.html" class="active">Home</a></li>
-                 <li><a href="about.html">About</a></li>
-                 <li><a href="skills.html">Skills</a></li>
-                 <li><a href="projects.html">Projects</a></li>
-                 <li><a href="contact.html">Contact</a></li>
-             </ul>
-+            <button class="mobile-menu">
-+                <i class="fas fa-bars"></i>
-+            </button>
-         </div>
-     </nav>
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
-     <div class="main-container">
-         <div class="left-side">
-             <div class="content">
-                 <div class="greeting">Hi, I am</div>
-                 <h1 class="name">Muhammad<br>Forhad Hasan</h1>
-                 <p class="title">CSE Undergraduate / Aspiring Fullstack Developer</p>
-                 <div class="social-links">
-                     <a href="mailto:forhadhasan1007@gmail.com" class="social-icon" title="Email">
-                         <i class="fas fa-envelope"></i>
-                     </a>
-                     <a href="https://github.com/2021331066-forhad" class="social-icon" title="GitHub">
-                         <i class="fab fa-github"></i>
-                     </a>
-                     <a href="https://www.linkedin.com/in/forhad-hasan-b5769b2b0/" class="social-icon" title="LinkedIn">
-                         <i class="fab fa-linkedin"></i>
-                     </a>
-                 </div>
-             </div>
-         </div>
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
 
-         <div class="right-side">
-             <div class="image-container">
--                <img src="photo_2025-03-29_20-52-34.jpg" alt="Muhammad Forhad Hasan" class="profile-image">
-+                <img src="public/photo_2025-03-29_20-52-34.jpg" alt="Muhammad Forhad Hasan" class="profile-image">
-             </div>
-         </div>
-     </div>
- </body>
- </html>
+            .nav-links {
+                display: none;
+            }
+
+            .main-container {
+                flex-direction: column;
+                margin-top: 70px;
+                min-height: calc(100vh - 70px);
+            }
+
+            .left-side {
+                clip-path: none;
+                padding: 3rem 2rem;
+                text-align: center;
+                flex: none;
+                min-height: 50vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .right-side {
+                flex: none;
+                min-height: 50vh;
+                background: var(--white);
+                padding: 2rem;
+            }
+
+            .image-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+
+            .profile-image {
+                width: 300px;
+                height: 400px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            }
+
+            .content {
+                max-width: 100%;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .greeting {
+                font-size: 1.2rem;
+            }
+
+            .name {
+                font-size: clamp(2.5rem, 10vw, 3.5rem);
+                margin-bottom: 1rem;
+            }
+
+            .title {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .left-side {
+                padding: 2rem 1.5rem;
+            }
+
+            .profile-image {
+                width: 250px;
+                height: 350px;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .greeting {
+                font-size: 1.1rem;
+            }
+
+            .name {
+                font-size: clamp(2rem, 12vw, 3rem);
+            }
+
+            .title {
+                font-size: 1rem;
+            }
+
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Forhad Hasan</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="left-side">
+            <div class="content">
+                <div class="greeting">Hi, I am</div>
+                <h1 class="name">Muhammad<br>Forhad Hasan</h1>
+                <p class="title">CSE Undergraduate / Aspiring Fullstack Developer</p>
+                <div class="social-links">
+                    <a href="mailto:forhadhasan1007@gmail.com" class="social-icon" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/2021331066-forhad" class="social-icon" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/forhad-hasan-b5769b2b0/" class="social-icon" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="image-container">
+                <img src="public/photo_2025-03-29_20-52-34.jpg" alt="Muhammad Forhad Hasan" class="profile-image">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
