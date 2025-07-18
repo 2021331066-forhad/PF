@@ -57,7 +57,6 @@
         }
 
         .logo {
-            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--maroon), #A61E4D);
@@ -85,11 +84,6 @@
             color: var(--maroon);
         }
 
-        .nav-links a.active {
-            color: var(--maroon);
-            font-weight: 700;
-        }
-
         .mobile-menu {
             display: none;
             background: none;
@@ -97,6 +91,132 @@
             font-size: 1.5rem;
             color: var(--gray-700);
             cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-nav li {
+            text-align: center;
+            padding: 0.75rem 0;
+        }
+
+        .mobile-nav a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--maroon);
+            font-weight: 700;
+        }
+
+        .hire-me-btn {
+            background: var(--maroon);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 1.5rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hire-me-btn:hover {
+            background: #A61E4D;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 21, 56, 0.3);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-nav li {
+            text-align: center;
+            padding: 0.75rem 0;
+        }
+
+        .mobile-nav a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--maroon);
+            font-weight: 700;
+        }
+
+        .hire-me-btn {
+            background: var(--maroon);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 1.5rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hire-me-btn:hover {
+            background: var(--maroon-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 21, 56, 0.3);
         }
 
         .main-container {
@@ -143,6 +263,7 @@
         .social-links {
             display: flex;
             gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .social-icon {
@@ -193,7 +314,6 @@
             from {
                 opacity: 0;
                 transform: translateX(-50px);
-            }
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -205,21 +325,13 @@
                 opacity: 0;
                 transform: translateX(50px);
             }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
 
         @media (max-width: 768px) {
             .mobile-menu {
                 display: block;
-            }
 
             .nav-links {
                 display: none;
-            }
-
             .main-container {
                 flex-direction: column;
                 margin-top: 70px;
@@ -229,18 +341,10 @@
             .left-side {
                 clip-path: none;
                 padding: 3rem 2rem;
-                text-align: center;
-                flex: none;
-                min-height: 50vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
 
             .right-side {
                 flex: none;
                 min-height: 50vh;
-                background: var(--white);
                 padding: 2rem;
             }
 
@@ -265,18 +369,14 @@
                 justify-content: center;
             }
 
-            .greeting {
-                font-size: 1.2rem;
+            .hire-me-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
             }
 
-            .name {
-                font-size: clamp(2.5rem, 10vw, 3.5rem);
-                margin-bottom: 1rem;
-            }
-
-            .title {
-                font-size: 1.1rem;
-                margin-bottom: 2rem;
+            .hire-me-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
 
@@ -294,22 +394,14 @@
                 padding: 0 1.5rem;
             }
 
-            .greeting {
-                font-size: 1.1rem;
+            .hire-me-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
             }
 
-            .name {
-                font-size: clamp(2rem, 12vw, 3rem);
-            }
-
-            .title {
-                font-size: 1rem;
-            }
-
-            .social-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
+            .hire-me-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -318,7 +410,6 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Forhad Hasan</a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -326,18 +417,38 @@
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <button class="mobile-menu">
+            <button class="mobile-menu" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
+
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
 
     <div class="main-container">
         <div class="left-side">
             <div class="content">
                 <div class="greeting">Hi, I am</div>
                 <h1 class="name">Muhammad<br>Forhad Hasan</h1>
-                <p class="title">CSE Undergraduate / Aspiring Fullstack Developer</p>
+                <p class="title">CSE Undergraduate | Competitive Programmer | Aspiring Fullstack Software Engineer</p>
                 <div class="social-links">
                     <a href="mailto:forhadhasan1007@gmail.com" class="social-icon" title="Email">
                         <i class="fas fa-envelope"></i>
@@ -349,14 +460,49 @@
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
+                <a href="contact.html" class="hire-me-btn">Hire Me</a>
             </div>
         </div>
 
         <div class="right-side">
             <div class="image-container">
-                <img src="public/photo_2025-03-29_20-52-34.jpg" alt="Muhammad Forhad Hasan" class="profile-image">
+                <img src="photo_2025-03-29_20-52-34.jpg" alt="Muhammad Forhad Hasan" class="profile-image">
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileMenuBtn = document.querySelector('.mobile-menu');
+            
+            if (!mobileNav.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileNav.classList.remove('active');
+            }
+        });
+    </script>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileMenuBtn = document.querySelector('.mobile-menu');
+            
+            if (!mobileNav.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileNav.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
