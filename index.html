@@ -1,737 +1,291 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects - Muhammad Forhad Hasan</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-      :root {
-        --black: #1a1a1a;
-        --white: #ffffff;
-        --gray-50: #f9fafb;
-        --gray-100: #f3f4f6;
-        --gray-200: #e5e7eb;
-        --gray-300: #d1d5db;
-        --gray-400: #9ca3af;
-        --gray-500: #6b7280;
-        --gray-600: #4b5563;
-        --gray-700: #374151;
-        --gray-800: #1f2937;
-        --gray-900: #111827;
-        --maroon: #800020;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: 'Inter', sans-serif;
-        line-height: 1.6;
-        color: var(--gray-800);
-        background: var(--white);
-      }
-
-      /* Navigation */
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--gray-200);
-        z-index: 1000;
-        padding: 1rem 0;
-      }
-
-      .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-      }
-
-      .logo {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--black);
-        text-decoration: none;
-        letter-spacing: -0.5px;
-      }
-
-      .nav-links {
-        display: flex;
-        list-style: none;
-        gap: 2rem;
-        align-items: center;
-      }
-
-      .nav-links a {
-        color: var(--gray-700);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-        position: relative;
-      }
-
-      .nav-links a:hover {
-        color: var(--maroon);
-      }
-
-      .nav-links a.active {
-        color: var(--maroon);
-        font-weight: 700;
-      }
-
-      /* Mobile Menu */
-      .mobile-menu-btn {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--gray-700);
-        cursor: pointer;
-        padding: 0.5rem;
-      }
-
-      .mobile-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        border-top: 1px solid var(--gray-200);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .mobile-menu.active {
-        display: block;
-      }
-
-      .mobile-nav-links {
-        display: flex;
-        flex-direction: column;
-        list-style: none;
-        padding: 1rem 0;
-        gap: 0;
-      }
-
-      .mobile-nav-links li {
-        border-bottom: 1px solid var(--gray-100);
-      }
-
-      .mobile-nav-links li:last-child {
-        border-bottom: none;
-      }
-
-      .mobile-nav-links a {
-        display: block;
-        padding: 1rem 2rem;
-        color: var(--gray-700);
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-      }
-
-      .mobile-nav-links a:hover,
-      .mobile-nav-links a.active {
-        background: var(--gray-50);
-        color: var(--maroon);
-        font-weight: 700;
-      }
-
-      .mobile-contact-btn {
-        background: var(--black);
-        color: var(--white);
-        margin: 1rem 2rem;
-        padding: 0.75rem 1.5rem;
-        border-radius: 50px;
-        font-weight: 600;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        letter-spacing: 0.5px;
-        transition: all 0.3s ease;
-      }
-
-      .mobile-contact-btn:hover {
-        background: var(--maroon);
-      }
-
-      .contact-btn {
-        background: var(--black);
-        color: var(--white);
-        padding: 0.75rem 1.5rem;
-        border-radius: 50px;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        letter-spacing: 0.5px;
-        transition: all 0.3s ease;
-      }
-
-      .contact-btn:hover {
-        background: var(--maroon);
-      }
-
-      /* Main Content */
-      .main-container {
-        display: flex;
-        min-height: 100vh;
-        margin-top: 80px;
-      }
-
-      .sidebar {
-        width: 300px;
-        background: var(--gray-50);
-        border-right: 1px solid var(--gray-200);
-        padding: 2rem;
-        position: sticky;
-        top: 80px;
-        height: calc(100vh - 80px);
-        overflow-y: auto;
-      }
-
-      .content {
-        flex: 1;
-        padding: 2rem;
-        max-width: calc(100% - 300px);
-      }
-
-      .page-title {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--black);
-        margin-bottom: 1rem;
-        letter-spacing: -1px;
-      }
-
-      .page-subtitle {
-        font-size: 1.2rem;
-        color: var(--gray-600);
-        margin-bottom: 3rem;
-        line-height: 1.5;
-      }
-
-      /* Filter Buttons */
-      .filter-buttons {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 3rem;
-        flex-wrap: wrap;
-      }
-
-      .filter-btn {
-        padding: 0.75rem 1.5rem;
-        border: 2px solid var(--gray-300);
-        background: var(--white);
-        color: var(--gray-700);
-        border-radius: 50px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: capitalize;
-      }
-
-      .filter-btn:hover,
-      .filter-btn.active {
-        border-color: var(--maroon);
-        background: var(--maroon);
-        color: var(--white);
-      }
-
-      /* Projects Grid */
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-bottom: 3rem;
-      }
-
-      .project-card {
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 12px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      }
-
-      .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        border-color: var(--maroon);
-      }
-
-      .project-image {
-        width: 100%;
-        height: 200px;
-        background: var(--gray-100);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--gray-500);
-        font-size: 3rem;
-      }
-
-      .project-content {
-        padding: 1.5rem;
-      }
-
-      .project-title {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: var(--black);
-        margin-bottom: 0.5rem;
-      }
-
-      .project-description {
-        color: var(--gray-600);
-        margin-bottom: 1rem;
-        line-height: 1.5;
-      }
-
-      .project-tech {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .tech-tag {
-        background: var(--gray-100);
-        color: var(--gray-700);
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: 500;
-      }
-
-      .project-links {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .project-link {
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-      }
-
-      .project-link.primary {
-        background: var(--black);
-        color: var(--white);
-      }
-
-      .project-link.primary:hover {
-        background: var(--maroon);
-      }
-
-      .project-link.secondary {
-        background: var(--gray-100);
-        color: var(--gray-700);
-      }
-
-      .project-link.secondary:hover {
-        background: var(--gray-200);
-      }
-
-      /* Sidebar Styles */
-      .sidebar-section {
-        margin-bottom: 2rem;
-      }
-
-      .sidebar-title {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--black);
-        margin-bottom: 1rem;
-      }
-
-      .tech-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .tech-item {
-        padding: 0.5rem 0.75rem;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 6px;
-        font-size: 0.9rem;
-        color: var(--gray-700);
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .tech-item:hover,
-      .tech-item.active {
-        border-color: var(--maroon);
-        background: var(--maroon);
-        color: var(--white);
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-      }
-
-      .stat-item {
-        text-align: center;
-        padding: 1rem;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 8px;
-      }
-
-      .stat-number {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--maroon);
-        display: block;
-      }
-
-      .stat-label {
-        font-size: 0.85rem;
-        color: var(--gray-600);
-        margin-top: 0.25rem;
-      }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-
-        .mobile-menu-btn {
-          display: block;
-        }
-
-        .main-container {
-          flex-direction: column;
-          margin-top: 70px;
-        }
-
-        .sidebar {
-          width: 100%;
-          position: static;
-          height: auto;
-          border-right: none;
-          border-bottom: 1px solid var(--gray-200);
-        }
-
-        .content {
-          max-width: 100%;
-          padding: 1.5rem;
-        }
-
-        .page-title {
-          font-size: 2rem;
-        }
-
-        .projects-grid {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-
-        .filter-buttons {
-          justify-content: center;
-        }
-
-        .stats-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .nav-container {
-          padding: 0 1rem;
-        }
-
-        .content {
-          padding: 1rem;
-        }
-
-        .page-title {
-          font-size: 1.75rem;
-        }
-
-        .projects-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .project-card {
-          margin: 0;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="index.html" class="logo">MFH</a>
-        <ul class="nav-links">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="skills.html">Skills</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="contact.html" class="contact-btn">Contact</a></li>
-        </ul>
-        
-        <!-- Mobile Menu Button -->
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
-        
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-          <ul class="mobile-nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html" class="mobile-contact-btn">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <div class="main-container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <div class="sidebar-section">
-          <h3 class="sidebar-title">Technologies</h3>
-          <div class="tech-list">
-            <div class="tech-item active" data-filter="all">All Projects</div>
-            <div class="tech-item" data-filter="react">React</div>
-            <div class="tech-item" data-filter="javascript">JavaScript</div>
-            <div class="tech-item" data-filter="python">Python</div>
-            <div class="tech-item" data-filter="nodejs">Node.js</div>
-            <div class="tech-item" data-filter="mongodb">MongoDB</div>
-            <div class="tech-item" data-filter="html-css">HTML/CSS</div>
-          </div>
-        </div>
-
-        <div class="sidebar-section">
-          <h3 class="sidebar-title">Project Stats</h3>
-          <div class="stats-grid">
-            <div class="stat-item">
-              <span class="stat-number">12</span>
-              <span class="stat-label">Total Projects</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">8</span>
-              <span class="stat-label">Completed</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">3</span>
-              <span class="stat-label">In Progress</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">6</span>
-              <span class="stat-label">Technologies</span>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      <!-- Main Content -->
-      <main class="content">
-        <h1 class="page-title">My Projects</h1>
-        <p class="page-subtitle">
-          A collection of my work showcasing various technologies and problem-solving approaches. 
-          Each project represents a learning journey and demonstrates different aspects of web development.
-        </p>
-
-        <!-- Filter Buttons -->
-        <div class="filter-buttons">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="web">Web Apps</button>
-          <button class="filter-btn" data-filter="mobile">Mobile</button>
-          <button class="filter-btn" data-filter="api">APIs</button>
-          <button class="filter-btn" data-filter="tools">Tools</button>
-        </div>
-
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <div class="project-card" data-category="web react">
-            <div class="project-image">🌐</div>
-            <div class="project-content">
-              <h3 class="project-title">E-Commerce Platform</h3>
-              <p class="project-description">
-                A full-stack e-commerce solution with user authentication, product management, 
-                shopping cart, and payment integration.
-              </p>
-              <div class="project-tech">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">MongoDB</span>
-                <span class="tech-tag">Stripe</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link primary">Live Demo</a>
-                <a href="#" class="project-link secondary">GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="project-card" data-category="web javascript">
-            <div class="project-image">📊</div>
-            <div class="project-content">
-              <h3 class="project-title">Data Visualization Dashboard</h3>
-              <p class="project-description">
-                Interactive dashboard for visualizing complex datasets with charts, 
-                filters, and real-time updates.
-              </p>
-              <div class="project-tech">
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">D3.js</span>
-                <span class="tech-tag">Chart.js</span>
-                <span class="tech-tag">API</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link primary">Live Demo</a>
-                <a href="#" class="project-link secondary">GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project-card" data-category="api nodejs">
-            <div class="project-image">🔗</div>
-            <div class="project-content">
-              <h3 class="project-title">RESTful API Service</h3>
-              <p class="project-description">
-                Scalable REST API with authentication, rate limiting, 
-                comprehensive documentation, and automated testing.
-              </p>
-              <div class="project-tech">
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Express</span>
-                <span class="tech-tag">JWT</span>
-                <span class="tech-tag">Swagger</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link primary">Documentation</a>
-                <a href="#" class="project-link secondary">GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4 -->
-          <div class="project-card" data-category="web react">
-            <div class="project-image">📱</div>
-            <div class="project-content">
-              <h3 class="project-title">Social Media App</h3>
-              <p class="project-description">
-                Modern social platform with real-time messaging, 
-                post sharing, user profiles, and notification system.
-              </p>
-              <div class="project-tech">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Socket.io</span>
-                <span class="tech-tag">Redux</span>
-                <span class="tech-tag">Firebase</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link primary">Live Demo</a>
-                <a href="#" class="project-link secondary">GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5 -->
-          <div class="project-card" data-category="tools python">
-            <div class="project-image">🤖</div>
-            <div class="project-content">
-              <h3 class="project-title">Automation Tool</h3>
-              <p class="project-description">
-                Python-based automation suite for web scraping, 
-                data processing, and report generation.
-              </p>
-              <div class="project-tech">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Selenium</span>
-                <span class="tech-tag">Pandas</span>
-                <span class="tech-tag">BeautifulSoup</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link primary">Demo</a>
-                <a href="#" class="project-link secondary">GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6 -->
-          <div class="project-card" data-category="web javascript">
-            <div class="project-image">🎮</div>
-            <div class="project-content">
-              <h3 class="project-title">Interactive Game</h3>
-              <p class="project-description">
-                Browser-based puzzle game with multiple levels, 
-                scoring system, and local storage for progress.
-              </p>
-              <div class="project-tech">
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Canvas API</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">LocalStorage</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link primary">Play Game</a>
-                <a href="#" class="project-link secondary">GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-
-    <script>
-      function toggleMobileMenu() {
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenu.classList.toggle('active');
-      }
-
-      // Close mobile menu when clicking outside
-      document.addEventListener('click', function(event) {
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-        
-        if (!mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
-          mobileMenu.classList.remove('active');
-        }
-      });
-
-      // Close mobile menu when window is resized to desktop
-      window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-          document.getElementById('mobileMenu').classList.remove('active');
-        }
-      });
-    </script>
-  </body>
-</html>
+@@ .. @@
+         .nav-links a {
+             color: var(--gray-700);
+             text-decoration: none;
+             font-weight: 500;
+             font-size: 0.95rem;
+             transition: 0.3s;
+         }
+
+         .nav-links a:hover {
+             color: var(--maroon);
+         }
+
++        .nav-links a.active {
++            color: var(--maroon);
++            font-weight: 600;
++        }
++
+         .main-container {
+             min-height: 100vh;
+             display: flex;
+             margin-top: 80px;
+         }
+
+         .left-side {
+             flex: 1;
+             background: var(--gray-50);
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             padding: 4rem;
+             clip-path: polygon(0 0, 75% 0, 85% 100%, 0 100%);
+         }
+
+         .content {
+             max-width: 500px;
+             animation: slideInLeft 1s ease-out;
+         }
+
+         .greeting {
+             font-size: 1.4rem;
+             color: var(--gray-600);
+             margin-bottom: 1rem;
+         }
+
+         .name {
+             font-family: 'Space Grotesk', sans-serif;
+             font-size: clamp(3rem, 8vw, 4.5rem);
+             font-weight: 700;
+             color: var(--black);
+             margin-bottom: 1.5rem;
+         }
+
+         .title {
+             font-size: 1.3rem;
+             color: var(--gray-500);
+             margin-bottom: 3rem;
+         }
+
+         .social-links {
+             display: flex;
+             gap: 1.5rem;
+         }
+
+         .social-icon {
+             width: 50px;
+             height: 50px;
+             background: var(--white);
+             border-radius: 50%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             color: var(--gray-700);
+             text-decoration: none;
+             font-size: 1.2rem;
+             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+             transition: 0.3s;
+         }
+
+         .social-icon:hover {
+             background: var(--maroon);
+             color: var(--white);
+             transform: translateY(-3px);
+             box-shadow: 0 8px 25px rgba(139, 21, 56, 0.3);
+         }
+
+         .right-side {
+             flex: 1;
+             background: var(--black);
+             display: flex;
+             align-items: center;
+             justify-content: center;
++            padding: 2rem;
+         }
+
+         .image-container {
+             position: relative;
+             animation: slideInRight 1s ease-out;
+         }
+
+         .profile-image {
+             width: 450px;
+             height: 600px;
+             object-fit: cover;
+             border-radius: 20px;
+             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+         }
+
++        .mobile-menu {
++            display: none;
++            background: none;
++            border: none;
++            font-size: 1.5rem;
++            color: var(--gray-700);
++            cursor: pointer;
++        }
++
+         @keyframes slideInLeft {
+             from {
+                 opacity: 0;
+                 transform: translateX(-50px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateX(0);
+             }
+         }
+
+         @keyframes slideInRight {
+             from {
+                 opacity: 0;
+                 transform: translateX(50px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateX(0);
+             }
+         }
+
+         @media (max-width: 768px) {
++            .mobile-menu {
++                display: block;
++            }
++
+             .nav-links {
+                 display: none;
+             }
+
+             .main-container {
+                 flex-direction: column;
+                 margin-top: 70px;
++                min-height: calc(100vh - 70px);
+             }
+
+             .left-side {
+                 clip-path: none;
+                 padding: 3rem 2rem;
+                 text-align: center;
++                flex: none;
++                min-height: 50vh;
++                display: flex;
++                align-items: center;
++                justify-content: center;
+             }
+
+             .right-side {
+-                min-height: 60vh;
++                flex: none;
++                min-height: 50vh;
++                background: var(--white);
++                padding: 2rem;
+             }
+
++            .image-container {
++                display: flex;
++                justify-content: center;
++                align-items: center;
++                height: 100%;
++            }
++
+             .profile-image {
+                 width: 300px;
+                 height: 400px;
++                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+             }
+
+             .content {
+                 max-width: 100%;
+             }
+
+             .social-links {
+                 justify-content: center;
+             }
++
++            .greeting {
++                font-size: 1.2rem;
++            }
++
++            .name {
++                font-size: clamp(2.5rem, 10vw, 3.5rem);
++                margin-bottom: 1rem;
++            }
++
++            .title {
++                font-size: 1.1rem;
++                margin-bottom: 2rem;
++            }
+         }
+
+         @media (max-width: 480px) {
+             .left-side {
+                 padding: 2rem 1.5rem;
+             }
+
+             .profile-image {
+                 width: 250px;
+                 height: 350px;
+             }
+
+             .nav-container {
+                 padding: 0 1.5rem;
+             }
++
++            .greeting {
++                font-size: 1.1rem;
++            }
++
++            .name {
++                font-size: clamp(2rem, 12vw, 3rem);
++            }
++
++            .title {
++                font-size: 1rem;
++            }
++
++            .social-icon {
++                width: 45px;
++                height: 45px;
++                font-size: 1.1rem;
++            }
+         }
+     </style>
+ </head>
+
+ <body>
+     <nav class="navbar">
+         <div class="nav-container">
+             <a href="#" class="logo">Forhad Hasan</a>
+             <ul class="nav-links">
+-                <li><a href="index.html">Home</a></li>
++                <li><a href="index.html" class="active">Home</a></li>
+                 <li><a href="about.html">About</a></li>
+                 <li><a href="skills.html">Skills</a></li>
+                 <li><a href="projects.html">Projects</a></li>
+                 <li><a href="contact.html">Contact</a></li>
+             </ul>
++            <button class="mobile-menu">
++                <i class="fas fa-bars"></i>
++            </button>
+         </div>
+     </nav>
+
+     <div class="main-container">
+         <div class="left-side">
+             <div class="content">
+                 <div class="greeting">Hi, I am</div>
+                 <h1 class="name">Muhammad<br>Forhad Hasan</h1>
+                 <p class="title">CSE Undergraduate / Aspiring Fullstack Developer</p>
+                 <div class="social-links">
+                     <a href="mailto:forhadhasan1007@gmail.com" class="social-icon" title="Email">
+                         <i class="fas fa-envelope"></i>
+                     </a>
+                     <a href="https://github.com/2021331066-forhad" class="social-icon" title="GitHub">
+                         <i class="fab fa-github"></i>
+                     </a>
+                     <a href="https://www.linkedin.com/in/forhad-hasan-b5769b2b0/" class="social-icon" title="LinkedIn">
+                         <i class="fab fa-linkedin"></i>
+                     </a>
+                 </div>
+             </div>
+         </div>
+
+         <div class="right-side">
+             <div class="image-container">
+-                <img src="photo_2025-03-29_20-52-34.jpg" alt="Muhammad Forhad Hasan" class="profile-image">
++                <img src="public/photo_2025-03-29_20-52-34.jpg" alt="Muhammad Forhad Hasan" class="profile-image">
+             </div>
+         </div>
+     </div>
+ </body>
+ </html>
