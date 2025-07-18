@@ -92,6 +92,60 @@
       color: var(--maroon);
     }
 
+    .nav-links a.active {
+      color: var(--maroon);
+      font-weight: 700;
+    }
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--gray-700);
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    .mobile-nav.active {
+      display: block;
+    }
+
+    .mobile-nav ul {
+      list-style: none;
+      padding: 1rem 0;
+    }
+
+    .mobile-nav li {
+      text-align: center;
+      padding: 0.75rem 0;
+    }
+
+    .mobile-nav a {
+      color: var(--gray-700);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      color: var(--maroon);
+      font-weight: 700;
+    }
+
     .contact-btn {
       background: var(--black);
       color: var(--white);
@@ -231,6 +285,10 @@
 
     /* Responsive Design */
     @media (max-width: 768px) {
+      .mobile-menu {
+        display: block;
+      }
+
       .nav-links {
         display: none;
       }
@@ -245,6 +303,46 @@
 
       .skills-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .skills-section {
+        padding: 2rem;
+      }
+
+      .skill-card {
+        padding: 1.5rem;
+      }
+
+      .skill-category {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-content {
+        padding: 90px 1rem 2rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .skills-section {
+        padding: 1.5rem;
+      }
+
+      .skill-card {
+        padding: 1.25rem;
+      }
+
+      .skill-category {
+        font-size: 1rem;
+      }
+
+      .skill-item {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
       }
     }
   </style>
@@ -259,12 +357,25 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="skills.html">Skills</a></li>
+        <li><a href="skills.html" class="active">Skills</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <button class="mobile-menu" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html" class="active">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- Main Content -->
   <div class="main-content">
@@ -397,5 +508,23 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileMenuBtn = document.querySelector('.mobile-menu');
+      
+      if (!mobileNav.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+        mobileNav.classList.remove('active');
+      }
+    });
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </body>
 </html>
