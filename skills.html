@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills - Muhammad Forhad Hasan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --maroon: #8B1538;
+      --maroon-light: #A61E4D;
+      --maroon-dark: #6D1129;
+      --white: #FFFFFF;
+      --black: #000000;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--black);
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--gray-700);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--maroon);
+    }
+
+    .contact-btn {
+      background: var(--black);
+      color: var(--white);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-btn:hover {
+      background: var(--maroon);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 2rem 4rem;
+    }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .skills-section {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--maroon);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background: linear-gradient(135deg, var(--gray-50), var(--gray-100));
+      padding: 2rem;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      border-color: var(--maroon);
+    }
+
+    .skill-category {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--maroon);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-icon {
+      font-size: 1.5rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-item {
+      background: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray-700);
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+    }
+
+    .skill-item:hover {
+      background: var(--maroon);
+      color: var(--white);
+      transform: scale(1.05);
+    }
+
+    .proficiency-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--gray-200);
+      border-radius: 4px;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+
+    .proficiency-fill {
+      height: 100%;
+      background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .proficiency-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .main-content {
+        padding: 100px 1.5rem 2rem;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">MFH</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="#contact" class="contact-btn">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1 class="page-title">My Skills</h1>
+    
+    <div class="skills-section">
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-category">
+            <span class="skill-icon">💻</span>
+            Programming Languages
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">Python</div>
+            <div class="skill-item">Java</div>
+            <div class="skill-item">C++</div>
+            <div class="skill-item">JavaScript</div>
+            <div class="skill-item">HTML</div>
+            <div class="skill-item">CSS</div>
+          </div>
+          <div class="proficiency-bar">
+            <div class="proficiency-fill" style="width: 85%"></div>
+          </div>
+          <div class="proficiency-label">
+            <span>Proficiency</span>
+            <span>85%</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-category">
+            <span class="skill-icon">🌐</span>
+            Web Technologies
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">React</div>
+            <div class="skill-item">Node.js</div>
+            <div class="skill-item">Express.js</div>
+            <div class="skill-item">REST APIs</div>
+            <div class="skill-item">Responsive Design</div>
+          </div>
+          <div class="proficiency-bar">
+            <div class="proficiency-fill" style="width: 75%"></div>
+          </div>
+          <div class="proficiency-label">
+            <span>Proficiency</span>
+            <span>75%</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-category">
+            <span class="skill-icon">🗃️</span>
+            Databases
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">MySQL</div>
+            <div class="skill-item">MongoDB</div>
+            <div class="skill-item">Database Design</div>
+            <div class="skill-item">SQL Queries</div>
+          </div>
+          <div class="proficiency-bar">
+            <div class="proficiency-fill" style="width: 70%"></div>
+          </div>
+          <div class="proficiency-label">
+            <span>Proficiency</span>
+            <span>70%</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-category">
+            <span class="skill-icon">🔧</span>
+            Tools & Technologies
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">Git</div>
+            <div class="skill-item">GitHub</div>
+            <div class="skill-item">VS Code</div>
+            <div class="skill-item">Linux</div>
+            <div class="skill-item">Docker</div>
+          </div>
+          <div class="proficiency-bar">
+            <div class="proficiency-fill" style="width: 80%"></div>
+          </div>
+          <div class="proficiency-label">
+            <span>Proficiency</span>
+            <span>80%</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-category">
+            <span class="skill-icon">⚡</span>
+            Problem Solving
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">Algorithms</div>
+            <div class="skill-item">Data Structures</div>
+            <div class="skill-item">Competitive Programming</div>
+            <div class="skill-item">Logic Building</div>
+          </div>
+          <div class="proficiency-bar">
+            <div class="proficiency-fill" style="width: 85%"></div>
+          </div>
+          <div class="proficiency-label">
+            <span>Proficiency</span>
+            <span>85%</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-category">
+            <span class="skill-icon">🎨</span>
+            Design & UI/UX
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">Figma</div>
+            <div class="skill-item">UI Design</div>
+            <div class="skill-item">User Experience</div>
+            <div class="skill-item">Prototyping</div>
+          </div>
+          <div class="proficiency-bar">
+            <div class="proficiency-fill" style="width: 65%"></div>
+          </div>
+          <div class="proficiency-label">
+            <span>Proficiency</span>
+            <span>65%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
