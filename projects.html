@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Muhammad Forhad Hasan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --maroon: #8B1538;
+      --maroon-light: #A61E4D;
+      --maroon-dark: #6D1129;
+      --white: #FFFFFF;
+      --black: #000000;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--gray-900);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 0;
+      background: rgba(17, 24, 39, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-700);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--gray-300);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--maroon-light);
+    }
+
+    .contact-btn {
+      background: var(--maroon);
+      color: var(--white);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-btn:hover {
+      background: var(--maroon-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(139, 21, 56, 0.3);
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 2rem 4rem;
+    }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #34D399, #3B82F6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      text-align: center;
+      color: var(--gray-400);
+      font-size: 1.2rem;
+      margin-bottom: 4rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--gray-800);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid var(--gray-700);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-header {
+      height: 200px;
+      background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-icon {
+      font-size: 4rem;
+      color: var(--white);
+      z-index: 2;
+    }
+
+    .project-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-badge {
+      background: var(--maroon);
+      color: var(--white);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .project-description {
+      color: var(--gray-300);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      background: var(--gray-700);
+      color: var(--gray-300);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-link {
+      background: var(--maroon);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+      background: var(--maroon-light);
+      transform: translateY(-2px);
+    }
+
+    .project-link.secondary {
+      background: transparent;
+      border: 1px solid var(--gray-600);
+      color: var(--gray-300);
+    }
+
+    .project-link.secondary:hover {
+      background: var(--gray-700);
+      color: var(--white);
+    }
+
+    /* Specific project gradients */
+    .fruit-panda {
+      background: linear-gradient(135deg, #34D399, #059669);
+    }
+
+    .brick-breaker {
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+    }
+
+    .snake-game {
+      background: linear-gradient(135deg, #10B981, #059669);
+    }
+
+    .calculator {
+      background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .main-content {
+        padding: 100px 1.5rem 2rem;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">MFH</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="#contact" class="contact-btn">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1 class="page-title">Featured Projects</h1>
+    <p class="page-subtitle">Showcasing my latest work and innovations</p>
+    
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-header fruit-panda">
+          <div class="project-icon">🍎</div>
+        </div>
+        <div class="project-content">
+          <div class="project-title">
+            Fruit Panda
+            <div class="project-badge">Featured</div>
+          </div>
+          <p class="project-description">
+            A user-friendly web platform designed to bridge the gap between verified fruit growers and trust-seeking buyers. Our goal is to streamline the journey of fresh fruits — from farm to doorstep — with trust, transparency, and technology.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Express</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">View Project</a>
+            <a href="#" class="project-link secondary">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header brick-breaker">
+          <div class="project-icon">🧱</div>
+        </div>
+        <div class="project-content">
+          <div class="project-title">
+            Brick Breaker Game
+          </div>
+          <p class="project-description">
+            A classic arcade-style brick breaker game built with modern web technologies. Features smooth animations, power-ups, multiple levels, and responsive controls. Perfect for casual gaming with increasing difficulty levels.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML5 Canvas</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">Game Logic</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">Play Game</a>
+            <a href="#" class="project-link secondary">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header snake-game">
+          <div class="project-icon">🐍</div>
+        </div>
+        <div class="project-content">
+          <div class="project-title">
+            Snake Game
+          </div>
+          <p class="project-description">
+            A modern take on the classic Snake game with smooth gameplay, score tracking, and collision detection. Built using vanilla JavaScript with clean, responsive design and intuitive keyboard controls.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">Game Development</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">Play Game</a>
+            <a href="#" class="project-link secondary">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header calculator">
+          <div class="project-icon">🧮</div>
+        </div>
+        <div class="project-content">
+          <div class="project-title">
+            Calculator
+          </div>
+          <p class="project-description">
+            A fully functional calculator web application with a clean, modern interface. Supports basic arithmetic operations, decimal calculations, and keyboard input. Features responsive design and smooth animations.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">Math Operations</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">Try Calculator</a>
+            <a href="#" class="project-link secondary">View Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
