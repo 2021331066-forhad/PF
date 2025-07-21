@@ -2,7 +2,7 @@
 
 This is the source code for my personal portfolio website — designed to showcase my skills, projects, achievements, and experiences as a Computer Science undergraduate, competitive programmer, and aspiring full-stack software engineer.
 
-Live Website: [Click Here](https://2021331066-forhad.github.io/PF/)
+Live Website: [Click Here](https://2021331066-forhad.github.io/Portfolio/)
 
 ---
 
@@ -34,7 +34,7 @@ The site is built using the following technologies:
 - Clean and elegant design
 - SEO-optimized and fast loading
 - Easy to navigate layout
-- Contact form integration (EmailJS / Netlify Forms / Formspree)
+- Contact form integration 
 
 ---
 
@@ -45,5 +45,4 @@ Feel free to connect with me:
 - **Email:** [forhadhasan1007@gmail.com](mailto:forhadhasan1007@gmail.com)
 - **LinkedIn:** [forhad_hasan](https://www.linkedin.com/in/forhad-hasan-b5769b2b0/)
 - **GitHub:** [2021331066-forhad](https://github.com/2021331066-forhad)
-- **Website:** [Portfolio](https://2021331066-forhad.github.io/PF/)
 
